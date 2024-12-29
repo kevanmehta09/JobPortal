@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <header>
+        <div style="float:right;">
+            <span>{{ user.username }}</span> | <a href="{% url 'Logout' %}">Logout</a>
+        </div>
+        <h1>Welcome to the Job Board</h1>
+    </header>
+
+    {% if user_company %}
+        <h2>Your Company: {{ user_company.name }}</h2>
+        <a href="{% url 'CreateJob' %}">Create a New Job</a>
+    {% else %}
+        <p>You don't have a company yet. Please create one first.</p>
+    {% endif %}
+
+    <h2>Job Listings</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Company</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Location</th>
+                <!-- <th>Posted On</th> -->
+                <th>Salary</th>
+                <!-- <th>Tags</th> -->
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for job in jobs %}
+            <tr>
+                <td>{{ job.company.name }}</td>
+                <td>{{ job.title }}</td>
+                <td>{{ job.description }}</td>
+                <td>{{ job.location }}</td>
+                <!-- <td>{{ job.posted_on }}</td> -->
+                <td>{{ job.salary }}</td>
+                <!-- <td>{{ job.tags }}</td> -->
+                <td>
+                    {% if job.company.name == user_company.name %}
+                        <a href="{% url 'UpdateJob' job.id %}">Update</a> |
+                        <a href="{% url 'DeleteJob' job.id %}">Delete</a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
