@@ -21,5 +21,6 @@ from job import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.SignUp,name="SignUp"),
-    path('login/',views.Login,name="Login")
+    path('login/',views.Login,name="Login"),
+    path('companyregister/',views.CompanyRegister,name="CompanyRegister")
 ]

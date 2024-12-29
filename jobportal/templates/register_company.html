@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Company</title>
+</head>
+<body>
+    <h1>Register Your Company</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="cname">Company name</label>
+        <input type="text" placeholder="Enter Company name" id="cname" name="cname">
+
+        <label for="address">Address</label>
+        <input type="text" placeholder="Enter Company's Address" id="address" name="address">
+
+        <label for="contact">Contact Number</label>
+        <input type="text" placeholder="enter contact_number" id="contact" name="contact">
+
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>
