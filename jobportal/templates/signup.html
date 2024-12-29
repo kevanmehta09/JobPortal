@@ -3,9 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>SignUp</title>
 </head>
 <body>
     <h1>Hello SignUp here</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="username">name</label>
+        <input type="text" placeholder="Enter name" id="username" name="username">
+
+        <label for="email">email</label>
+        <input type="text" placeholder="Enter email" id="email" name="email">
+
+        <label for="contact">Contact Number</label>
+        <input type="text" placeholder="enter contact_number" id="contact" name="contact">
+
+        <label for="password">Password</label>
+        <input type="password" placeholder="Password" id="password" name="password">
+
+        <button type="submit">SignUp</button>
+        <a href="{% url 'Login' %}">Existing account</a>
+    </form>
 </body>
 </html>
