@@ -25,7 +25,6 @@ def Login(request):
     if request.method == 'POST':
         name = request.POST.get('username')
         password = request.POST.get('password')
-        nw_user = CustomUser.objects.get(username = name)
         user = authenticate(request,username = name,password = password)
         print(user)
         if user is not None:

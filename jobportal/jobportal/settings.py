@@ -101,6 +101,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",  # Points to the static folder inside your app
+]
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
