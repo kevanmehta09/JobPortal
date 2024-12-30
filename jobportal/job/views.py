@@ -3,6 +3,7 @@ from .models import CustomUser,Company,Job
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.core.paginator import Paginator
 
 # Create your views here.
 
@@ -51,10 +52,14 @@ def Home(request):
     user = request.user
     company = Company.objects.get(user = user)
     jobs = Job.objects.all()
+    paginator = Paginator(jobs, 5) 
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
     return render(request,'home.html',{
-        'jobs':jobs,
+        # 'jobs':jobs,
         'user_company':company,
-        'user':user
+        'user':user,
+        "page_obj": page_obj
     })
 
 @login_required
@@ -104,6 +109,7 @@ def DeleteJob(request,jobid):
     messages.success(request, "Job deleted successfully!")
     return redirect('Home')
 
+@login_required
 def Logout(request):
     logout(request)
     return redirect('Login')
