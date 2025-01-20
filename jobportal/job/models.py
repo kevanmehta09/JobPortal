@@ -1,5 +1,5 @@
-from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.db import models 
+from django.contrib.auth.models import AbstractUser 
 
 
 # CustomUserModel
@@ -12,9 +12,8 @@ class CustomUser(AbstractUser):
     user_permissions = models.ManyToManyField(
         'auth.Permission', related_name='customuser_permissions_set', blank=True
     )
-
     def __str__(self):
-        return self.username
+        return str(self.username)
 
 # CompanyModel
 
@@ -27,7 +26,7 @@ class Company(models.Model):
     contact_number = models.CharField(max_length=10)
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
 # Job Model
 
@@ -52,4 +51,4 @@ class Job(models.Model):
         self.tags = ', '.join(tagList)
 
     def __str__(self):
-        return self.title
+        return str(self.title)
